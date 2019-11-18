@@ -6,5 +6,6 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <string> 
 
 // TODO: Verweisen Sie hier auf zusätzliche Header, die Ihr Programm erfordert.

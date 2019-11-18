@@ -62,9 +62,11 @@ void printGrid(Grid &grid) {
 int main(int argc, char *argv[])
 {
 	auto startWall = chrono::high_resolution_clock::now();
-	int n = 100;
+	int n = atoi(argv[1]);
 	Grid grid = generateGrid(n);
-	setCircleWithValue(grid, 127.0, 35);
+	int diameter = atoi(argv[2]);
+	int value = stod(argv[3]);
+	setCircleWithValue(grid, value, diameter);
 	auto startCompute = chrono::high_resolution_clock::now();
 	int amountIterations = 1000;
 	for (int i = 0; i < amountIterations; i++) {
