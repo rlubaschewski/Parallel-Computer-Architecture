@@ -1,6 +1,9 @@
 # output directories
 out/
 
+# IDE stuff
+.vs/
+
 # Prerequisites
 *.d
 
