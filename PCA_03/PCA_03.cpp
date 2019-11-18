@@ -1,7 +1,7 @@
 ﻿#include "PCA_03.h"
 using namespace std;
 
-typedef vector<vector<double>> Grid;
+typedef vector<vector<double> > Grid;
 
 Grid generateGrid(int n) {
 	Grid grid;
@@ -74,9 +74,9 @@ int main(int argc, char *argv[])
 	}
 	// printGrid(grid);
 	auto endCompute = chrono::high_resolution_clock::now();
-	auto durationCompute = chrono::duration_cast<chrono::duration<double>>(endCompute - startCompute);
+	auto durationCompute = chrono::duration_cast<chrono::duration<double> >(endCompute - startCompute);
 	auto endWall = chrono::high_resolution_clock::now();
-	auto durationWall = chrono::duration_cast<chrono::duration<double>>(endWall - startWall);
+	auto durationWall = chrono::duration_cast<chrono::duration<double> >(endWall - startWall);
 	cout << "The relaxation of a " << n << " x " << n << " grid with " << amountIterations << " iterations took " << durationCompute.count() << " seconds";
 	cout << "The total execution time of the program is " << durationWall.count() << " seconds";
 }
