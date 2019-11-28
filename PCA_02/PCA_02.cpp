@@ -71,14 +71,16 @@ int main(int argc, char* argv[])
 		start = chrono::high_resolution_clock::now();
 		matrixVectorMultiplyColumnWise(A, x, y);
 		end = chrono::high_resolution_clock::now();
+		cout << "Executing columnwise multiplication..." << endl;
 	}
 	else {
 		start = chrono::high_resolution_clock::now();
 		matrixVectorMultiplyRowWise(A, x, y);
 		end = chrono::high_resolution_clock::now();
+		cout << "Executing rowwise multiplication..." << endl;
 	}
 	auto duration = chrono::duration_cast<chrono::microseconds >(end - start);
-	cout << "The execution time of the multiplication with a" << m << " x " n << "matrix took " << duration "micro seconds."
+	cout << "The execution time of the multiplication with a" << m << " x " n << "matrix took " << duration "microseconds."
 	
 
 	return 0;
