@@ -4,7 +4,6 @@ using namespace std;
 
 typedef vector<vector<double> > matrix;
 typedef vector<double> vec;
-typedef chrono::time_point<chrono::steady_clock> timePoint;
 
 double getRandomValue()
 {
@@ -44,9 +43,9 @@ void printMatrix(matrix& A) {
 
 int main(int argc, char* argv[])
 {
-	int m = 10;
-	int n = 10;
-	bool columnWise = true;
+	int m = atoi(argv[1]);
+	int n = atoi(argv[2]);
+	bool columnWise = argv[3] == "columnWise";
 	srand(time(NULL));
 	matrix A(m, vec(m, 0.0));
 
@@ -65,23 +64,22 @@ int main(int argc, char* argv[])
 
 	// result vector
 	vec y(m, 0.0);
-	timePoint start;
-	timePoint end;
 	if (columnWise) {
-		start = chrono::high_resolution_clock::now();
+		auto start = chrono::high_resolution_clock::now();
 		matrixVectorMultiplyColumnWise(A, x, y);
-		end = chrono::high_resolution_clock::now();
+		auto end = chrono::high_resolution_clock::now();
 		cout << "Executing columnwise multiplication..." << endl;
+		auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+		cout << "The execution time of the multiplication with a " << m << " x " << n << " matrix took " << duration.count() << " microseconds.";
 	}
 	else {
-		start = chrono::high_resolution_clock::now();
+		auto start = chrono::high_resolution_clock::now();
 		matrixVectorMultiplyRowWise(A, x, y);
-		end = chrono::high_resolution_clock::now();
+		auto end = chrono::high_resolution_clock::now();
 		cout << "Executing rowwise multiplication..." << endl;
+		auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+		cout << "The execution time of the multiplication with a " << m << " x " << n << " matrix took " << duration.count() << " microseconds.";
 	}
-	auto duration = chrono::duration_cast<chrono::microseconds >(end - start);
-	cout << "The execution time of the multiplication with a " << m << " x " << n << " matrix took " << duration.count() << " microseconds.";
 	
-
 	return 0;
 }
