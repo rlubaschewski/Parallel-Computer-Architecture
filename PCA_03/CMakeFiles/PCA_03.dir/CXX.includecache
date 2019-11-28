@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hpc01/Parallel-Computer-Architecture/PCA_03/PCA_03.cpp
+PCA_03.h
+/home/hpc01/Parallel-Computer-Architecture/PCA_03/PCA_03.h
+
+/home/hpc01/Parallel-Computer-Architecture/PCA_03/PCA_03.h
+iostream
+-
+vector
+-
+chrono
+-
+string
+-
+cmath
+-
+
