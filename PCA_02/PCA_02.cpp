@@ -45,7 +45,8 @@ int main(int argc, char* argv[])
 {
 	int m = atoi(argv[1]);
 	int n = atoi(argv[2]);
-	bool columnWise = argv[3] == "columnWise";
+	string columnWiseStr = argv[3];
+	bool columnWise = columnWiseStr == "columnWise";
 	srand(time(NULL));
 	matrix A(m, vec(m, 0.0));
 
