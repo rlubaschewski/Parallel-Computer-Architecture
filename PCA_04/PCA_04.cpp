@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 	int numberOfThreads = atoi(argv[2]);
 
 	if (numberOfThreads > n) {
-		throw std::invalid_argument("Number of threads can't be greater as the number of total iterations!");
+		throw invalid_argument("Number of threads can't be greater as the number of total iterations!");
 	}
 
 	pthread_t threadIds[numberOfThreads];
