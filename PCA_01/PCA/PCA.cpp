@@ -25,9 +25,10 @@ double approximatePi(int n) {
 
 
 int main(int argc, char* argv[]) { 
-	int n = 1000000;
+	int n = atoi(argv[1]);
 	double result = approximatePi(n);
 	double pi = 3.1415926535897;
+	setprecision(13);
 	cout << "The result is " << result << endl;
 	cout << "The exact value of pi (13 decimals) is " << pi << endl;
 }
