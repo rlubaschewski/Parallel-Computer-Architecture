@@ -65,6 +65,7 @@ int main(int argc, char* argv[]) {
 	cout << "The exact value of pi is " << pi << endl;
 	auto durationCompute = chrono::duration_cast<chrono::microseconds>(endCompute - startCompute).count();
 	cout << "The approximation of Pi with " << n << " rectangles and " << numberOfThreads << " threads took " << durationCompute << " microseconds" << endl;
+	cout << "The absolute error of the result is " << result - pi << endl;
 	auto endWall = chrono::high_resolution_clock::now();
 	auto durationWall = chrono::duration_cast<chrono::microseconds>(endWall - startWall).count();
 	cout << "The total execution time of the program is " << durationWall << " microseconds." << endl;
