@@ -44,9 +44,9 @@ void printMatrix(matrix& A) {
 
 int main(int argc, char* argv[])
 {
-	int m = atoi(argv[1]);
-	int n = atoi(argv[2]);
-	bool columnWise = argv[3] == "columnWise";
+	int m = 10;
+	int n = 10;
+	bool columnWise = true;
 	srand(time(NULL));
 	matrix A(m, vec(m, 0.0));
 
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 		cout << "Executing rowwise multiplication..." << endl;
 	}
 	auto duration = chrono::duration_cast<chrono::microseconds >(end - start);
-	cout << "The execution time of the multiplication with a" << m << " x " n << "matrix took " << duration "microseconds."
+	cout << "The execution time of the multiplication with a " << m << " x " << n << " matrix took " << duration.count() << " microseconds.";
 	
 
 	return 0;
