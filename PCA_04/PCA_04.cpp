@@ -1,8 +1,4 @@
 ﻿#include "PCA_04.h"
-#include <iostream>
-#include <cmath>
-#include <chrono>
-#include <pthread.h>
 
 using namespace std;
 
@@ -35,13 +31,18 @@ void* approximatePiRunner(void* arg) {
 
 
 int main(int argc, char* argv[]) {
-	int n = 1000000;
-	int numberOfThreads = 32;
+	auto startWall = chrono::high_resolution_clock::now();
+	int n = atoi(argv[1]);
+	int numberOfThreads = atoi(argv[2]);
+
+	if (numberOfThreads > n) {
+		throw std::invalid_argument("Number of threads can't be greater as the number of total iterations!");
+	}
 
 	pthread_t threadIds[numberOfThreads];
 
 	struct runnerStruct runnerData[numberOfThreads];
-	auto start = chrono::high_resolution_clock::now();
+	auto startCompute = chrono::high_resolution_clock::now();
 	// spawn all threads
 	for (int i = 0; i < numberOfThreads; i++) {
 		runnerData[i].start = i * (n / numberOfThreads);
@@ -57,11 +58,14 @@ int main(int argc, char* argv[]) {
 		pthread_join(threadIds[i], NULL);
 	}
 	result *= 4.0;
-	auto end = chrono::high_resolution_clock::now();
+	auto endCompute = chrono::high_resolution_clock::now();
 	double pi = 3.1415926535897;
 	cout.precision(17);
 	cout << "The result is " << result << endl;
 	cout << "The exact value of pi is " << pi << endl;
-	auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
-	cout << "The approximation of Pi with " << n << " rectangles and " << numberOfThreads << " threads " << " took " << duration << " microseconds" << endl;
+	auto durationCompute = chrono::duration_cast<chrono::microseconds>(endCompute - startCompute).count();
+	cout << "The approximation of Pi with " << n << " rectangles and " << numberOfThreads << " threads took " << durationCompute << " microseconds" << endl;
+	auto endWall = chrono::high_resolution_clock::now();
+	auto durationWall = chrono::duration_cast<chrono::microseconds>(endWall - startWall).count();
+	cout << "The total execution time of the program is " << durationWall << " microseconds." << endl;
 }
