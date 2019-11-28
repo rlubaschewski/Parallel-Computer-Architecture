@@ -19,7 +19,7 @@ double approximatePi(int n) {
 	result *= 4.0;
 	auto end = chrono::high_resolution_clock::now();
 	auto duration = chrono::duration_cast<chrono::microseconds>(end - start).count();
-	cout << "The approximation of Pi with " << n << " rectangles" << " took " << duration << " milliseconds" << endl;
+	cout << "The approximation of Pi with " << n << " rectangles" << " took " << duration << " microseconds" << endl;
 	return result;
 }
 
