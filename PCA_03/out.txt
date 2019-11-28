@@ -1,0 +1,1 @@
+The relaxation of a 5000 x 5000 grid with 1000 iterations took 1264.65 secondsThe total execution time of the program is 1264.96 seconds
