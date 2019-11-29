@@ -46,7 +46,11 @@ int main(int argc, char* argv[]) {
 	// spawn all threads
 	for (int i = 0; i < numberOfThreads; i++) {
 		runnerData[i].start = i * (n / numberOfThreads);
-		runnerData[i].end  = (i + 1) * (n / numberOfThreads) - 1;
+		if (i == numberOfThreads - 1) {
+			runnerData[i].end = n - 1;
+		} else {
+			runnerData[i].end  = (i + 1) * (n / numberOfThreads) - 1;
+		}
 		runnerData[i].n = n;
 
 		pthread_attr_t threadAtrribute;
